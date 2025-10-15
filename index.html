@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jess Delgado Perez - Senior Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Urbanist:wght@800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,27 +15,45 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            padding: 20px;
             align-items: center;
+            padding: 40px 20px;
             color: #e4e4e7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         .container {
-            max-width: 800px;
+            max-width: 700px;
             width: 100%;
-            text-align: center;
-            animation: fadeIn 1s ease-in;
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes fadeIn {
+        .header {
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -40,138 +61,161 @@
             }
         }
 
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            font-weight: bold;
-            color: #ffffff;
-            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
-            transition: transform 0.3s ease;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.4);
+        .initials {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #64748b;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-family: 'Urbanist', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
             color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 24px;
+            padding-bottom: 4px;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6 0%, transparent 100%);
+            border-radius: 2px;
         }
 
-        .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+        .title {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             color: #94a3b8;
-        }
-
-        .bio {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #cbd5e1;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-weight: 400;
+            margin-bottom: 12px;
         }
 
         .location {
             font-size: 1rem;
-            color: #94a3b8;
-            margin-bottom: 30px;
+            color: #64748b;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .bio {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 50px;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .connect {
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .connect h2 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 24px;
         }
 
         .links {
             display: flex;
-            gap: 20px;
-            justify-content: center;
+            gap: 16px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .link-btn {
-            padding: 15px 30px;
-            background: rgba(59, 130, 246, 0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            border-radius: 8px;
-            color: #e4e4e7;
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 6px;
+            color: #cbd5e1;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
             display: inline-block;
         }
 
         .link-btn:hover {
-            background: rgba(59, 130, 246, 0.2);
             border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-1px);
         }
 
         .social-links {
             display: flex;
-            gap: 25px;
-            justify-content: center;
-            margin-top: 30px;
+            gap: 20px;
         }
 
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        .social-link {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 24px;
-            transition: all 0.3s ease;
+            gap: 8px;
         }
 
-        .social-icon:hover {
-            background: rgba(59, 130, 246, 0.15);
+        .social-link:hover {
             color: #3b82f6;
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-3px);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            body {
+                padding: 30px 20px;
             }
 
-            .tagline {
-                font-size: 1.2rem;
+            .header {
+                margin-bottom: 40px;
+            }
+
+            .initials {
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                margin-bottom: 16px;
             }
 
             .bio {
                 font-size: 1rem;
+                margin-bottom: 40px;
             }
 
-            .avatar {
-                width: 120px;
-                height: 120px;
-                font-size: 48px;
+            .links {
+                margin-bottom: 40px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 16px;
             }
         }
 
@@ -182,16 +226,16 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
         }
 
         .particle {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(59, 130, 246, 0.4);
+            width: 2px;
+            height: 2px;
+            background: rgba(59, 130, 246, 0.3);
             border-radius: 50%;
-            animation: float 15s infinite ease-in-out;
+            animation: float 20s infinite ease-in-out;
         }
 
         @keyframes float {
@@ -203,29 +247,31 @@
                 opacity: 1;
             }
             90% {
-                opacity: 1;
+                opacity: 0.5;
             }
             100% {
-                transform: translateY(-100vh) translateX(50px);
+                transform: translateY(-100vh) translateX(30px);
                 opacity: 0;
             }
         }
     </style>
 </head>
 <body>
+    <div class="grain"></div>
     <div class="particles" id="particles"></div>
     
     <div class="container">
-        <div class="avatar">JDP</div>
-        
-        <h1>Jess Delgado Perez</h1>
-        <p class="tagline">Senior Software Engineer</p>
-        <p class="location">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            Pensacola, Florida
-        </p>
+        <div class="header">
+            <div class="initials">JDP</div>
+            <h1>Jess Delgado Perez</h1>
+            <p class="title">Senior Software Engineer</p>
+            <div class="location">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Pensacola, Florida
+            </div>
+        </div>
         
         <p class="bio">
             Senior Software Engineer at Drata with close to 15 years of experience in web application development. 
@@ -233,50 +279,53 @@
             Passionate about building scalable applications and mentoring engineering teams.
         </p>
         
-        <div class="links">
-            <a href="https://www.linkedin.com/in/jessdelgadoperez" class="link-btn">LinkedIn</a>
-            <!-- <a href="tel:0000000000" class="link-btn">Contact</a>
-            <a href="#experience" class="link-btn">Experience</a>
-            <a href="#resume" class="link-btn">Resume</a> -->
-        </div>
-        
-        <div class="social-links">
-            <a href="https://github.com/jessdelgadoperez" class="social-icon" title="GitHub">
-                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/jessdelgadoperez" class="social-icon" title="LinkedIn">
-                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
-                    <circle cx="4" cy="4" r="2"/>
-                </svg>
-            </a>
-            <a href="mailto:jessdp.com.aground791@passmail.com" class="social-icon" title="Email">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                </svg>
-            </a>
-            <!--<a href="tel:8508653625" class="social-icon" title="Phone">
-                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                </svg>
-            </a>-->
+        <div class="connect">
+            <h2>Connect</h2>
+            
+            <div class="links">
+                <a href="https://www.linkedin.com/in/jessdelgadoperez" class="link-btn">LinkedIn</a>
+                <a href="https://github.com/jessdelgadoperez" class="link-btn">GitHub</a>
+                <a href="mailto:jessdp.com.aground791@passmail.com" class="link-btn">Email</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://github.com/jessdelgadoperez" class="social-link">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    github.com/jessdelgadoperez
+                </a>
+                
+                <a href="https://www.linkedin.com/in/jessdelgadoperez" class="social-link">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                    linkedin.com/in/jessdelgadoperez
+                </a>
+                
+                <a href="mailto:jessdp.com.aground791@passmail.com" class="social-link">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    jessdp.com.aground791@passmail.com
+                </a>
+            </div>
         </div>
     </div>
 
     <script>
-        // Create floating particles
+        // Create subtle floating particles
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 30;
+        const particleCount = 25;
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
             particlesContainer.appendChild(particle);
         }
     </script>
