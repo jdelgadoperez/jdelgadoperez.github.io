@@ -7,6 +7,10 @@
     <meta name="description"
         content="Jess Delgado Perez - Senior Software Engineer at Drata with 15 years of experience in web application development.">
     <title>Jess Delgado Perez - Senior Software Engineer</title>
+    <link rel="icon" type="image/x-icon" href="img/logo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logo/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/logo/favicon-180x180.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -41,6 +45,30 @@
             opacity: 0.03;
             pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .logo-watermark {
+            position: fixed;
+            top: 50%;
+            right: -100px;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 800px;
+            opacity: 0.022;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('img/logo/icon-1-nodes.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @media (max-width: 768px) {
+            .logo-watermark {
+                width: 500px;
+                height: 500px;
+                right: -150px;
+            }
         }
 
         .container {
@@ -286,6 +314,7 @@
 <body>
     <div class="grain"></div>
     <div class="particles" id="particles"></div>
+    <div class="logo-watermark"></div>
 
     <div class="container">
         <div class="header">
